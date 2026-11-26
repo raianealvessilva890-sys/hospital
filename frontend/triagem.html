@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Triagem</title>
+<link rel="stylesheet" href="css/style3.css">
+
+<style>
+  .btn-tv {
+    background-color: chartreuse;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  .btn-tv:hover { background: black; }
+
+  .pacientes-file {
+    margin-bottom: 30px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid white;
+  }
+
+  .pacientes-file h3 {
+    margin-top: 0;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pacientes-file h3 span {
+    font-size: 13px;
+    font-weight: normal;
+    color: #666;
+  }
+
+  .file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border: 1px solid white;
+  }
+
+  .file-item strong {font-size: 15px;}
+  .file-item small {color: #888;
+    font-size: 12px;}
+  .btn-abrir-tv {
+    display: inline-block;
+    background: aqua;
+    color: white;
+    padding: 5px 14px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+
+.btn-abrir-tv:hover { background: #117a8b;}
+
+</style>
+</head>
+
+
+<body>
+<div class="container">
+
+  <!--Cabeçalho com botão da TV-->
+  <div style="display:flex; justify-content:space-between;
+   align-items: center; margin-bottom: 20px;">
+   <h2 style="margin: 0;">Triagem Hospitalar</h2>
+   <button class="btn-abrir-tv" onclick="window.open('tv.html','_blank')">📺 Abrir Tela da TV</button>
+    </div>
+
+    <!--Fila de pacientes do Atendimento criado para mostrar quem pode ser chamado na TV-->
+    <div class="pacientes-file">
+      <h3>pacientes cadastrados no Atendimento<span>Clique em "Chamar na TV" para chamar ao guichê</span></h3>
+      <div id="file-pacientes">
+        <p style="color: #888; text-align: center;">Carregando...</p>
+      </div>
+      <button onclick="carregarPacientes()" style="margin-top: 8px;
+      background: #6c757d; color: white; border: none; padding: 6px 
+      12px; border-radius: 4px; cursor: pointer; font-size: 13px;">🔄️ atualizar lista</button>
+     </div>
+
+<h2>🏥 Triagem Hospitalar</h2>
+
+<div class="painel-status">
+
+    <div class="status-card verde">
+        <span>🟢</span>
+        <strong>12</strong>
+        <p>Baixo risco</p>
+    </div>
+
+    <div class="status-card amarelo">
+        <span>🟡</span>
+        <strong>6</strong>
+        <p>Prioridade</p>
+    </div>
+
+    <div class="status-card vermelho">
+        <span>🔴</span>
+        <strong>3</strong>
+        <p>Emergência</p>
+    </div>
+
+    </div> <!-- fecha painel-status -->
+
+<div class="formulario-triagem">
+<input id="nome" placeholder="Nome">
+
+<select id="sintoma">
+
+<option value="">Selecione</option>
+<option value="dor_leve">Dor leve</option>
+<option value="resfriado">Resfriado</option>
+<option value="coriza">Coriza</option>
+<option value="tosse">Tosse</option>
+<option value="febre">Febre</option>
+<option value="vomito">Vômito</option>
+<option value="diarreia">Diarreia</option>
+<option value="falta_ar_moderada">Falta de ar moderada</option>
+<option value="falta_ar_grave">Falta de ar grave</option>
+<option value="infarto">Suspeita de infarto</option>
+<option value="avc">Suspeita de AVC</option>
+<option value="convulsao">Convulsão</option>
+<option value="hemorragia">Hemorragia</option>
+
+</select>
+
+<input
+  id="temp"
+  type="number"
+  placeholder="Temperatura"
+/>
+
+<input
+  id="alergia"
+  placeholder="Alergias"
+/>
+
+<textarea
+  id="observacao"
+  placeholder="Observações"></textarea>
+
+<div id="resultado"></div>
+
+<button onclick="salvar()">
+Salvar Triagem
+</button>
+
+</div>
+
+<script>
+
+function classificarRisco(sintoma, temperatura){
+
+  const vermelhos = [
+    "infarto",
+    "avc",
+    "convulsao",
+    "hemorragia",
+    "falta_ar_grave"
+  ];
+
+  const amarelos = [
+    "febre",
+    "vomito",
+    "diarreia",
+    "falta_ar_moderada"
+  ];
+
+  if (temperatura >= 39) {
+    return "vermelho";
+  }
+
+  if (vermelhos.includes(sintoma)) {
+    return "vermelho";
+  }
+
+  if (amarelos.includes(sintoma)) {
+    return "amarelo";
+  }
+
+  return "verde";
+}
+
+function salvar(){
+
+  const nome =
+    document.getElementById("nome").value;
+
+  const sintoma =
+    document.getElementById("sintoma").value;
+
+  const temperatura =
+    Number(document.getElementById("temp").value);
+
+  const alergia =
+    document.getElementById("alergia").value;
+
+  const observacao =
+    document.getElementById("observacao").value;
+
+  const risco =
+    classificarRisco(sintoma, temperatura);
+
+     // MOSTRA A CLASSIFICAÇÃO IMEDIATAMENTE
+
+  const resultado =
+    document.getElementById("resultado");
+
+
+  resultado.className = risco;
+
+
+ if(risco === "verde"){
+
+    resultado.innerHTML = `
+    <div class="icone-risco">🟢</div>
+    <div class="titulo-risco">RISCO BAIXO</div>
+    <div class="texto-risco">
+        Paciente pode aguardar atendimento.
+    </div>
+    `;
+
+}
+
+
+if(risco === "amarelo"){
+
+    resultado.innerHTML = `
+    <div class="icone-risco">🟡</div>
+    <div class="titulo-risco">RISCO MODERADO</div>
+    <div class="texto-risco">
+        Paciente necessita prioridade.
+    </div>
+    `;
+
+}
+
+
+if(risco === "vermelho"){
+
+    resultado.innerHTML = `
+    <div class="icone-risco">🚨</div>
+    <div class="titulo-risco">EMERGÊNCIA</div>
+    <div class="texto-risco">
+        Atendimento imediato necessário.
+    </div>
+    `;
+
+}
+
+  fetch("http://localhost:3000/triagem", {
+
+    method:"POST",
+
+    headers:{
+      "Content-Type":"application/json"
+    },
+
+    body: JSON.stringify({
+
+      nome,
+      sintoma,
+      temperatura,
+      alergia,
+      observacao,
+      risco
+
+    })
+
+  })
+
+  .then(r => r.json())
+
+  .then(data => {
+
+    const resultado =
+      document.getElementById("resultado");
+
+    resultado.className = risco;
+
+    resultado.innerHTML =
+      "Classificação: " +
+      risco.toUpperCase();
+
+    alert("Triagem salva");
+    window.location.href = "medico.html"
+
+   
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>

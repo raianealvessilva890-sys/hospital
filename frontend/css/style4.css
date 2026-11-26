@@ -1,0 +1,1247 @@
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+
+/* ==========================
+   FUNDO PREMIUM
+========================== */
+
+body{
+
+    font-family:'Inter', system-ui, sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+ background:
+
+    linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #1e3a8a 35%,
+    #0ea5e9 100%
+    );
+
+}
+
+
+
+/* ==========================
+   CARD ATENDIMENTO
+========================== */
+
+
+.container{
+
+    width:100%;
+
+    max-width:550px; /* antes era 450px */
+
+    padding:45px; /* antes era 35px */
+
+
+    background:
+
+    linear-gradient(
+    145deg,
+    rgba(161, 235, 255, 0.96),
+    rgba(190, 250, 255, 0.92)
+    );
+
+
+    backdrop-filter:blur(20px);
+
+
+    border-radius:30px;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.8);
+
+
+    box-shadow:
+
+
+    0 25px 60px rgba(15,23,42,.12);
+
+
+    animation:
+
+    entrada .6s ease;
+
+}
+
+
+
+@keyframes entrada{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* ==========================
+   TITULO
+========================== */
+
+
+.container h2{
+
+
+    text-align:center;
+
+
+    font-size:28px;
+
+
+    font-weight:800;
+
+
+      background:
+
+    linear-gradient(
+    90deg,
+    #0f44ac,
+    #acf2ff
+    );
+
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+
+/* ==========================
+   CAMPOS
+========================== */
+
+
+.container input,
+.container select{
+
+
+    width:100%;
+
+
+    padding:16px 18px;
+
+
+    margin-bottom:18px;
+
+
+    border-radius:16px;
+
+
+    border:2px solid #e2e8f0;
+
+
+    background:#f8fafc;
+
+
+    color:#0f172a;
+
+
+    font-size:15px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+/* PLACEHOLDER */
+
+input::placeholder{
+
+
+    color:#94a3b8;
+
+
+}
+
+
+
+/* FOCO */
+
+.container input:focus,
+.container select:focus{
+
+
+    outline:none;
+
+
+    background:white;
+
+
+    border-color:#a4e4ff;
+
+
+    box-shadow:
+
+
+    0 0 0 5px rgba(37,99,235,.15);
+
+
+    transform:translateY(-2px);
+
+
+}
+
+
+
+/* ==========================
+   UPLOAD DE FOTO
+========================== */
+
+
+.container input[type="file"]{
+
+
+    padding:18px;
+
+
+    border:2px dashed #cbd5e1;
+
+
+    background:#f8fafc;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+.container input[type="file"]:hover{
+
+
+    border-color:#2563eb;
+
+
+    background:#eff6ff;
+
+
+}
+
+
+
+/* ==========================
+   BOTÃO PREMIUM
+========================== */
+
+
+.container button{
+
+
+    width:100%;
+
+
+    padding:16px;
+
+
+    border:none;
+
+
+    border-radius:16px;
+
+
+    margin-top:10px;
+
+
+    background:
+
+
+   linear-gradient(
+135deg,
+#1d4ed8,
+#06b6d4,
+#22c55e
+);
+
+
+    color:white;
+
+
+    font-size:17px;
+
+
+    font-weight:700;
+
+
+    cursor:pointer;
+
+
+    box-shadow:
+
+
+    0 15px 30px rgba(37,99,235,.35);
+
+
+    transition:.3s;
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.container button:hover{
+
+
+    transform:translateY(-4px);
+
+
+    box-shadow:
+
+
+    0 20px 40px rgba(37,99,235,.45);
+
+
+}
+
+
+
+/* EFEITO DE BRILHO */
+
+.container button::after{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    top:0;
+
+
+    left:-100%;
+
+
+    width:50%;
+
+
+    height:100%;
+
+
+    background:
+
+
+    linear-gradient(
+
+    90deg,
+
+    transparent,
+
+    rgba(255,255,255,.45),
+
+    transparent
+
+    );
+
+
+    transition:.5s;
+
+
+}
+
+
+
+.container button:hover::after{
+
+
+    left:120%;
+
+
+}
+
+
+
+/* ==========================
+   RESPONSIVO
+========================== */
+
+
+@media(max-width:600px){
+
+
+    .container{
+
+
+        padding:25px;
+
+
+    }
+
+
+    .container h2{
+
+
+        font-size:24px;
+
+
+    }
+
+
+}
+
+/* ==========================
+   ANIMAÇÕES PREMIUM
+========================== */
+
+
+/* Card flutuando suavemente */
+
+.container{
+
+    animation:
+
+    entrada .8s ease,
+
+    flutuar 5s ease-in-out infinite;
+
+}
+
+
+
+@keyframes flutuar{
+
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* Entrada do card */
+
+@keyframes entrada{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        translateY(50px)
+
+        scale(.95);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateY(0)
+
+        scale(1);
+
+    }
+
+}
+
+
+
+/* Campos entrando um por um */
+
+
+.container input,
+.container select{
+
+
+    animation:
+
+    campoEntrada .5s ease backwards;
+
+
+}
+
+
+
+.container input:nth-child(2){
+
+    animation-delay:.1s;
+
+}
+
+
+.container input:nth-child(3){
+
+    animation-delay:.2s;
+
+}
+
+
+.container select{
+
+    animation-delay:.3s;
+
+}
+
+
+.container input[type="file"]{
+
+    animation-delay:.4s;
+
+}
+
+
+
+@keyframes campoEntrada{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        translateX(-20px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateX(0);
+
+    }
+
+}
+
+
+
+/* Brilho passando no botão automaticamente */
+
+
+.container button{
+
+
+    animation:
+
+    aparecerBotao .8s ease,
+
+    pulsarBotao 3s infinite;
+
+
+}
+
+
+
+@keyframes aparecerBotao{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+@keyframes pulsarBotao{
+
+
+    0%,100%{
+
+        box-shadow:
+
+        0 15px 30px rgba(37,99,235,.35);
+
+    }
+
+
+    50%{
+
+        box-shadow:
+
+        0 15px 45px rgba(56,189,248,.55);
+
+    }
+
+}
+
+
+
+/* Campo quando passa mouse */
+
+
+.container input:hover,
+.container select:hover{
+
+
+    border-color:#93c5fd;
+
+    background:#ffffff;
+
+
+}
+
+
+
+/* Arquivo com efeito */
+
+
+.container input[type="file"]{
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.container input[type="file"]:hover{
+
+
+    transform:translateY(-3px);
+
+
+}
+
+/* ==========================
+   DETALHES EXTRAS PREMIUM
+========================== */
+
+
+/* brilho suave atrás do card */
+
+body::before{
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:450px;
+
+
+    height:450px;
+
+
+    top:-150px;
+
+
+    left:-150px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+
+    radial-gradient(
+        circle,
+        rgba(56,189,248,.35),
+        transparent 70%
+    );
+
+
+    filter:blur(20px);
+
+
+}
+
+
+
+body::after{
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:500px;
+
+
+    height:500px;
+
+
+    bottom:-200px;
+
+
+    right:-150px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+
+    radial-gradient(
+        circle,
+        rgba(37,99,235,.35),
+        transparent 70%
+    );
+
+
+    filter:blur(25px);
+
+
+}
+
+
+
+/* garante o card acima do fundo */
+
+.container{
+
+    position:relative;
+
+    z-index:1;
+
+}
+
+
+
+/* pequeno cabeçalho interno */
+
+
+.container h2::before{
+
+
+    content:"🏥";
+
+
+    display:block;
+
+
+    font-size:40px;
+
+
+    margin-bottom:10px;
+
+
+    animation:
+
+    flutuarIcone 3s infinite ease-in-out;
+
+
+}
+
+
+
+@keyframes flutuarIcone{
+
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+
+}
+
+
+
+/* linha decorativa abaixo do título */
+
+
+.container h2::after{
+
+
+    content:"";
+
+
+    display:block;
+
+
+    width:80px;
+
+
+    height:4px;
+
+
+    margin:15px auto 0;
+
+
+    border-radius:20px;
+
+
+    background:
+
+
+    linear-gradient(
+        90deg,
+        #2563eb,
+        #06b6d4
+    );
+
+
+}
+
+
+
+/* efeito vidro mais forte */
+
+
+.container{
+
+
+    background:
+
+
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.98),
+        rgba(239,246,255,.90)
+    );
+
+
+    box-shadow:
+
+
+    0 30px 80px rgba(15,23,42,.25);
+
+
+}
+
+
+
+/* campos com sensação de aplicativo */
+
+
+.container input,
+.container select{
+
+
+    box-shadow:
+
+
+    0 5px 15px rgba(15,23,42,.04);
+
+
+}
+
+
+
+/* botão com brilho automático */
+
+
+.container button{
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.container button::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    top:0;
+
+
+    left:-120%;
+
+
+    width:80%;
+
+
+    height:100%;
+
+
+    background:
+
+
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+    );
+
+
+    animation:
+
+    brilhoBotao 4s infinite;
+
+
+}
+
+
+
+@keyframes brilhoBotao{
+
+
+    0%{
+
+        left:-120%;
+
+    }
+
+
+    40%{
+
+        left:120%;
+
+    }
+
+
+    100%{
+
+        left:120%;
+
+    }
+
+}
+
+
+
+/* responsivo melhor */
+
+@media(max-width:600px){
+
+
+    .container{
+
+
+        max-width:95%;
+
+
+        padding:30px;
+
+
+    }
+
+
+}
+
+/* ==========================
+   MENU HOSPITALAR SUPERIOR
+========================== */
+
+
+.menu-hospital{
+
+
+    position:fixed;
+
+
+    top:25px;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    display:flex;
+
+
+    gap:12px;
+
+
+    padding:10px;
+
+
+    background:
+
+
+    rgba(255,255,255,.85);
+
+
+    backdrop-filter:blur(15px);
+
+
+    border-radius:25px;
+
+
+    box-shadow:
+
+
+    0 15px 35px rgba(15,23,42,.15);
+
+
+    z-index:10;
+
+
+}
+
+
+
+/* BOTÕES */
+
+
+.menu-item{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:8px;
+
+
+    padding:12px 22px;
+
+
+    border-radius:18px;
+
+
+    text-decoration:none;
+
+
+    color:#475569;
+
+
+    font-weight:700;
+
+
+    font-size:14px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+/* PASSAR O MOUSE */
+
+
+.menu-item:hover{
+
+
+    background:#eff6ff;
+
+
+    color:#acd9f8;
+
+
+    transform:translateY(-3px);
+
+
+}
+
+
+
+/* TELA ATUAL */
+
+
+.menu-item.ativo{
+
+
+    background:
+
+
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+
+
+    color:white;
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(37,99,235,.35);
+
+
+}
+
+
+
+/* efeito pressionado */
+
+
+.menu-item.ativo:active{
+
+
+    transform:scale(.95);
+
+
+}
+
+
+
+/* RESPONSIVO */
+
+
+@media(max-width:600px){
+
+
+    .menu-hospital{
+
+
+        width:90%;
+
+
+        justify-content:center;
+
+
+    }
+
+
+    .menu-item span{
+
+
+        display:none;
+
+
+    }
+
+
+    .menu-item{
+
+
+        padding:12px 16px;
+
+
+    }
+
+
+}
+
+/* ==========================
+   FUNDO PADRÃO HOSPITALAR
+========================== */
+
+body{
+
+    font-family:'Inter', system-ui, sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+
+    background:
+
+    radial-gradient(
+        circle at top left,
+        rgba(56,189,248,.35),
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at bottom right,
+        rgba(37,99,235,.35),
+        transparent 35%
+    ),
+
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #1e3a8a,
+        #0ea5e9
+    );
+
+}

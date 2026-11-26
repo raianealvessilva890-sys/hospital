@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="menu-hospital">
+
+    <a href="atendimento.html" class="menu-item">
+        🧾
+        <span>Atendimento</span>
+    </a>
+
+    <a href="triagem.html" class="menu-item">
+        🏥
+        <span>Triagem</span>
+    </a>
+
+    <a href="medico.html" class="menu-item">
+        🩺
+        <span>Médico</span>
+    </a>
+
+</nav>
+
+<div class="container">
+
+  <h2>🩺 Painel Médico</h2>
+
+  <div id="triagens"></div>
+
+  <hr>
+
+  <h3>Consulta</h3>
+
+  <input id="paciente" placeholder="Paciente" readonly>
+
+  <input id="diagnostico" placeholder="Diagnóstico">
+
+  <select id="medicacao">
+    <option value="">Selecione a medicação</option>
+  </select>
+
+  <textarea id="obs" placeholder="Observações"></textarea>
+
+  <button onclick="salvar()">Salvar</button>
+
+</div>
+
+
+<script>
+let triagensCarregadas = [];
+
+function carregar() {
+  fetch("/triagens")
+    .then(r => {
+      if (!r.ok) throw new Error("Erro na rota /triagens");
+      return r.json();
+    })
+    .then(data => {
+      triagensCarregadas = data;
+
+      const div = document.getElementById("triagens");
+      div.innerHTML = "";
+
+      if (!Array.isArray(data) || data.length === 0) {
+        div.innerHTML = "<p>Nenhum paciente aguardando atendimento.</p>";
+        return;
+      }
+
+      data.forEach((t, index) => {
+        div.innerHTML += `
+          <div class="card">
+            <h3>${t.nome}</h3>
+            <p><b>Sintoma:</b> ${t.sintoma || "Não informado"}</p>
+            <p><b>Temperatura:</b> ${t.temperatura || "Não informada"}°C</p>
+            <p><b>Risco:</b> ${t.risco || "Não informado"}</p>
+            <p><b>Alergia:</b> ${t.alergia || "Nenhuma"}</p>
+            <p><b>Observação:</b> ${t.observacao || "Nenhuma"}</p>
+            <button onclick="selecionar(${index})">Atender</button>
+          </div>
+        `;
+      });
+    })
+    .catch(erro => {
+      console.error("Erro ao carregar triagens:", erro);
+      document.getElementById("triagens").innerHTML =
+        "<p>Erro ao carregar pacientes. Verifique o servidor.</p>";
+    });
+}
+
+function selecionar(index) {
+  const t = triagensCarregadas[index];
+
+  document.getElementById("paciente").value = t.nome;
+  document.getElementById("obs").value = t.observacao || "";
+
+  if (t.alergia && t.alergia !== "Nenhuma") {
+    alert("⚠️ Paciente possui alergia: " + t.alergia);
+  }
+}
+
+function carregarMedicacoes() {
+  fetch("/estoque")
+    .then(res => {
+      if (!res.ok) throw new Error("Erro na rota /estoque");
+      return res.json();
+    })
+    .then(data => {
+      const select = document.getElementById("medicacao");
+      select.innerHTML =
+        '<option value="">Selecione a medicação</option>';
+
+      data.forEach(med => {
+        const option = document.createElement("option");
+        option.value = med.nome;
+        option.textContent =
+          `${med.nome} (${med.quantidade} disponíveis)`;
+        select.appendChild(option);
+      });
+    })
+    .catch(erro => {
+      console.error("Erro ao carregar medicamentos:", erro);
+      alert("Não foi possível carregar os medicamentos do estoque.");
+    });
+}
+
+function salvar() {
+  const paciente = document.getElementById("paciente").value;
+  const diagnostico = document.getElementById("diagnostico").value;
+  const medicacao = document.getElementById("medicacao").value;
+  const obs = document.getElementById("obs").value;
+
+  if (!paciente) {
+    alert("Selecione um paciente clicando em Atender.");
+    return;
+  }
+
+  if (!medicacao) {
+    alert("Selecione uma medicação.");
+    return;
+  }
+
+  fetch("/consulta", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      paciente,
+      diagnostico,
+      medicacao,
+      obs
+    })
+  })
+  .then(r => r.json().then(data => {
+    if (!r.ok) throw new Error(data.erro || "Erro ao salvar consulta");
+    return data;
+  }))
+  .then(data => {
+    alert(data.mensagem || "Consulta salva!");
+
+    document.getElementById("diagnostico").value = "";
+    document.getElementById("medicacao").value = "";
+    document.getElementById("obs").value = "";
+    carregarMedicacoes();
+  })
+  .catch(erro => alert(erro.message));
+}
+
+carregar();
+carregarMedicacoes();
+</script>
+</body>
+</html>

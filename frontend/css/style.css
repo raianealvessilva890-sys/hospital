@@ -1,0 +1,1309 @@
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/* ==========================
+   FUNDO PREMIUM
+========================== */
+
+body{
+
+    font-family:'Inter',system-ui,sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #1e3a8a,
+        #0ea5e9
+    );
+
+}
+
+
+
+/* ==========================
+   CONTAINER PRINCIPAL
+========================== */
+
+
+.container{
+
+    width:100%;
+
+    max-width:550px;
+
+    margin:auto;
+
+
+    padding:25px;
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.96),
+        rgba(239,246,255,.92)
+    );
+
+
+    backdrop-filter:blur(20px);
+
+
+    border-radius:30px;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.8);
+
+
+
+    box-shadow:
+
+
+    0 25px 60px rgba(15,23,42,.18);
+
+
+    animation:
+
+    entrada .8s ease,
+
+    flutuar 5s infinite ease-in-out;
+
+
+}
+
+
+
+/* ==========================
+   ANIMAÇÕES
+========================== */
+
+
+@keyframes entrada{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        translateY(40px)
+
+        scale(.96);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateY(0)
+
+        scale(1);
+
+    }
+
+}
+
+
+
+@keyframes flutuar{
+
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
+
+
+
+
+/* ==========================
+   TITULOS
+========================== */
+
+
+.container h2{
+
+
+    text-align:center;
+
+
+    font-size:30px;
+
+
+    font-weight:800;
+
+
+    margin-bottom:30px;
+
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #2563eb,
+        #06b6d4
+    );
+
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+
+
+.container h3{
+
+    color:#0f172a;
+
+    margin:20px 0 15px;
+
+}
+
+
+
+
+/* ==========================
+   TRIAGENS
+========================== */
+
+
+#triagens{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(260px,1fr));
+
+
+    gap:20px;
+
+
+}
+
+
+
+/* CARD PACIENTE */
+
+
+.card{
+
+
+    padding:22px;
+
+
+    background:white;
+
+
+    border-radius:22px;
+
+
+    border:1px solid #e2e8f0;
+
+
+    box-shadow:
+
+
+    0 10px 30px rgba(15,23,42,.08);
+
+
+    transition:.3s;
+
+
+    animation:
+
+    aparecerCard .5s ease backwards;
+
+}
+
+
+
+.card:hover{
+
+
+    transform:
+
+    translateY(-6px);
+
+
+    box-shadow:
+
+
+    0 20px 40px rgba(37,99,235,.18);
+
+
+}
+
+
+
+@keyframes aparecerCard{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+.card h3{
+
+
+    color:#2563eb;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.card p{
+
+
+    color:#475569;
+
+
+    font-size:14px;
+
+
+    margin-bottom:10px;
+
+}
+
+
+
+/* ==========================
+   CLASSIFICAÇÃO DE RISCO
+========================== */
+
+
+.alto,
+.vermelho{
+
+
+    background:#fee2e2;
+
+
+    color:#dc2626;
+
+
+    padding:6px 12px;
+
+
+    border-radius:20px;
+
+
+    font-weight:700;
+
+}
+
+
+
+.medio,
+.amarelo{
+
+
+    background:#fef3c7;
+
+
+    color:#d97706;
+
+
+    padding:6px 12px;
+
+
+    border-radius:20px;
+
+
+    font-weight:700;
+
+}
+
+
+
+.baixo,
+.verde{
+
+
+    background:#dcfce7;
+
+
+    color:#16a34a;
+
+
+    padding:6px 12px;
+
+
+    border-radius:20px;
+
+
+    font-weight:700;
+
+}
+
+
+
+/* ==========================
+   LINHA DIVISORIA
+========================== */
+
+
+hr{
+
+
+    border:none;
+
+
+    height:1px;
+
+
+    background:#e2e8f0;
+
+
+    margin:35px 0;
+
+}
+
+
+
+/* ==========================
+   INPUTS
+========================== */
+
+
+.container input,
+.container select,
+.container textarea{
+
+
+    width:100%;
+
+
+    padding:16px 18px;
+
+
+    margin-bottom:18px;
+
+
+    border-radius:16px;
+
+
+    border:2px solid #e2e8f0;
+
+
+    background:#f8fafc;
+
+
+    color:#0f172a;
+
+
+    font-size:15px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.container textarea{
+
+
+    min-height:120px;
+
+
+    resize:none;
+
+
+}
+
+
+
+.container input:hover,
+.container select:hover,
+.container textarea:hover{
+
+
+    border-color:#93c5fd;
+
+
+    background:white;
+
+}
+
+
+
+.container input:focus,
+.container select:focus,
+.container textarea:focus{
+
+
+    outline:none;
+
+
+    background:white;
+
+
+    border-color:#2563eb;
+
+
+    box-shadow:
+
+
+    0 0 0 5px rgba(37,99,235,.15);
+
+
+    transform:translateY(-2px);
+
+
+}
+
+
+
+
+/* ==========================
+   BOTÕES
+========================== */
+
+
+.container button{
+
+
+    width:100%;
+
+
+    padding:16px;
+
+
+    border:none;
+
+
+    border-radius:16px;
+
+
+    background:
+
+
+    linear-gradient(
+        135deg,
+        #1d4ed8,
+        #06b6d4,
+        #22c55e
+    );
+
+
+    color:white;
+
+
+    font-size:16px;
+
+
+    font-weight:700;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+    box-shadow:
+
+
+    0 15px 30px rgba(37,99,235,.35);
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+}
+
+
+
+.card button{
+
+
+    margin-top:15px;
+
+}
+
+
+
+.container button:hover{
+
+
+    transform:translateY(-4px);
+
+
+    box-shadow:
+
+
+    0 20px 40px rgba(37,99,235,.45);
+
+
+}
+
+
+
+/* brilho botão */
+
+
+.container button::after{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    top:0;
+
+    left:-100%;
+
+
+    width:50%;
+
+
+    height:100%;
+
+
+    background:
+
+
+    linear-gradient(
+
+    90deg,
+
+    transparent,
+
+    rgba(255,255,255,.45),
+
+    transparent
+
+    );
+
+
+    transition:.5s;
+
+}
+
+
+
+.container button:hover::after{
+
+
+    left:120%;
+
+
+}
+
+
+
+/* ==========================
+   RESPONSIVO
+========================== */
+
+
+@media(max-width:600px){
+
+
+    body{
+
+        padding:20px;
+
+    }
+
+
+    .container{
+
+        padding:25px;
+
+    }
+
+
+    .container h2{
+
+        font-size:24px;
+
+    }
+
+
+}
+
+/* ==========================
+   DETALHES EXTRAS PAINEL MÉDICO
+========================== */
+
+
+/* Fundo com iluminação hospitalar */
+
+body{
+
+    position:relative;
+
+    overflow-x:hidden;
+
+}
+
+
+
+body::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:500px;
+
+
+    height:500px;
+
+
+    top:-200px;
+
+
+    left:-200px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+
+    radial-gradient(
+        circle,
+        rgba(56,189,248,.35),
+        transparent 70%
+    );
+
+
+    filter:blur(25px);
+
+
+}
+
+
+
+body::after{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:550px;
+
+
+    height:550px;
+
+
+    bottom:-250px;
+
+
+    right:-200px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+
+    radial-gradient(
+        circle,
+        rgba(37,99,235,.35),
+        transparent 70%
+    );
+
+
+    filter:blur(30px);
+
+
+}
+
+
+
+/* Mantém painel acima do fundo */
+
+
+.container{
+
+    position:relative;
+
+    z-index:1;
+
+}
+
+
+
+/* Ícone médico no título */
+
+
+.container h2::before{
+
+
+    content:"👨‍⚕️";
+
+
+    display:block;
+
+
+    font-size:42px;
+
+
+    margin-bottom:8px;
+
+
+    animation:
+
+    medicoFlutuar 3s infinite ease-in-out;
+
+
+}
+
+
+
+@keyframes medicoFlutuar{
+
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-7px);
+
+    }
+
+}
+
+
+
+/* Linha abaixo do título */
+
+
+.container h2::after{
+
+
+    content:"";
+
+
+    display:block;
+
+
+    width:90px;
+
+
+    height:4px;
+
+
+    margin:15px auto 0;
+
+
+    border-radius:20px;
+
+
+    background:
+
+
+    linear-gradient(
+        90deg,
+        #2563eb,
+        #06b6d4
+    );
+
+
+}
+
+
+
+/* Card dos pacientes mais profissional */
+
+
+.card{
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.card::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    top:0;
+
+
+    left:0;
+
+
+    width:5px;
+
+
+    height:100%;
+
+
+    background:
+
+
+    linear-gradient(
+        180deg,
+        #2563eb,
+        #06b6d4
+    );
+
+
+}
+
+
+
+/* Nome do paciente com mais destaque */
+
+
+.card h3{
+
+
+    font-size:20px;
+
+
+}
+
+
+
+/* Separação das informações */
+
+
+.card p{
+
+
+    padding-bottom:6px;
+
+
+    border-bottom:
+
+
+    1px solid #f1f5f9;
+
+
+}
+
+
+
+/* Botão atender */
+
+
+.card button{
+
+
+    background:
+
+
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #0891b2
+    );
+
+
+}
+
+
+
+.card button:hover{
+
+
+    transform:
+
+    translateY(-3px);
+
+
+}
+
+
+
+/* Barra de status médica */
+
+
+.container::after{
+
+
+    content:
+
+
+    "🏥 Sistema Médico • Atendimento Online";
+
+
+    display:block;
+
+
+    text-align:center;
+
+
+    margin-top:25px;
+
+
+    padding-top:15px;
+
+
+    border-top:
+
+
+    1px solid #e2e8f0;
+
+
+    color:#94a3b8;
+
+
+    font-size:12px;
+
+
+}
+
+
+
+/* Entrada dos cards em sequência */
+
+
+.card:nth-child(1){
+
+    animation-delay:.1s;
+
+}
+
+
+.card:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+
+.card:nth-child(3){
+
+    animation-delay:.3s;
+
+}
+
+
+.card:nth-child(4){
+
+    animation-delay:.4s;
+
+}
+
+/* ==========================
+   MENU HOSPITALAR SUPERIOR
+========================== */
+
+
+.menu-hospital{
+
+
+    position:fixed;
+
+
+    top:25px;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    display:flex;
+
+
+    gap:12px;
+
+
+    padding:10px;
+
+
+    background:
+
+
+    rgba(255,255,255,.85);
+
+
+    backdrop-filter:blur(15px);
+
+
+    border-radius:25px;
+
+
+    box-shadow:
+
+
+    0 15px 35px rgba(15,23,42,.15);
+
+
+    z-index:10;
+
+
+}
+
+
+
+/* BOTÕES */
+
+
+.menu-item{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:8px;
+
+
+    padding:12px 22px;
+
+
+    border-radius:18px;
+
+
+    text-decoration:none;
+
+
+    color:#475569;
+
+
+    font-weight:700;
+
+
+    font-size:14px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+/* PASSAR O MOUSE */
+
+
+.menu-item:hover{
+
+
+    background:#eff6ff;
+
+
+    color:#2563eb;
+
+
+    transform:translateY(-3px);
+
+
+}
+
+
+
+/* TELA ATUAL */
+
+
+.menu-item.ativo{
+
+
+    background:
+
+
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+
+
+    color:white;
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(37,99,235,.35);
+
+
+}
+
+
+
+/* efeito pressionado */
+
+
+.menu-item.ativo:active{
+
+
+    transform:scale(.95);
+
+
+}
+
+
+
+/* RESPONSIVO */
+
+
+@media(max-width:600px){
+
+
+    .menu-hospital{
+
+
+        width:90%;
+
+
+        justify-content:center;
+
+
+    }
+
+
+    .menu-item span{
+
+
+        display:none;
+
+
+    }
+
+
+    .menu-item{
+
+
+        padding:12px 16px;
+
+
+    }
+
+
+}
+
+/* ==========================
+   FUNDO PADRÃO HOSPITALAR
+========================== */
+
+body{
+
+    font-family:'Inter', system-ui, sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+
+    background:
+
+    radial-gradient(
+        circle at top left,
+        rgba(56,189,248,.35),
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at bottom right,
+        rgba(37,99,235,.35),
+        transparent 35%
+    ),
+
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #1e3a8a,
+        #0ea5e9
+    );
+
+}

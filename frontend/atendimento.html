@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atendimento</title>
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+
+<body>
+
+<nav class="menu-hospital">
+
+    <a href="atendimento.html" class="menu-item">
+        🧾
+        <span>Atendimento</span>
+    </a>
+
+    <a href="triagem.html" class="menu-item">
+        🏥
+        <span>Triagem</span>
+    </a>
+
+    <a href="medico.html" class="menu-item">
+        🩺
+        <span>Médico</span>
+    </a>
+
+</nav>
+
+<div class="container">
+
+    <h2>Atendimento</h2>
+
+    <!-- DADOS DO PACIENTE -->
+
+    <input id="nome" placeholder="Nome completo">
+
+    <input id="cpf" placeholder="CPF">
+
+    <label>Data de nascimento:</label>
+    <input type="date" id="dataNascimento">
+
+    <label>Sexo:</label>
+    <select id="sexo">
+        <option value="">Selecione</option>
+        <option value="Feminino">Feminino</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Outro">Outro</option>
+    </select>
+
+    <input id="nomeMae" placeholder="Nome da mãe">
+
+    <label>Estado civil:</label>
+    <select id="estadoCivil">
+        <option value="">Selecione</option>
+        <option value="Solteiro(a)">Solteiro(a)</option>
+        <option value="Casado(a)">Casado(a)</option>
+        <option value="Divorciado(a)">Divorciado(a)</option>
+        <option value="Viúvo(a)">Viúvo(a)</option>
+    </select>
+
+    <input id="endereco" placeholder="Endereço">
+
+    <input id="telefone" placeholder="Telefone">
+
+    <input id="contatoEmergencia" placeholder="Contato de emergência">
+
+    <label>Tipo de atendimento:</label>
+    <select id="tipo">
+        <option value="Convenio">Convênio</option>
+        <option value="Particular">Particular</option>
+    </select>
+
+    <label>Foto:</label>
+    <input type="file" id="foto">
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+</div>
+
+<script>
+
+    // Identifica a página atual e deixa o menu ativo
+    const paginaAtual = window.location.pathname.split("/").pop();
+
+    document.querySelectorAll(".menu-item").forEach(item => {
+
+        const link = item.getAttribute("href");
+
+        if (link === paginaAtual) {
+            item.classList.add("ativo");
+        }
+
+    });
+
+
+    // Cadastrar paciente
+    function cadastrar() {
+
+        fetch("http://localhost:3000/atendimento", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                nome: document.getElementById("nome").value,
+
+                cpf: document.getElementById("cpf").value,
+
+                dataNascimento: document.getElementById("dataNascimento").value,
+
+                sexo: document.getElementById("sexo").value,
+
+                nomeMae: document.getElementById("nomeMae").value,
+
+                estadoCivil: document.getElementById("estadoCivil").value,
+
+                endereco: document.getElementById("endereco").value,
+
+                telefone: document.getElementById("telefone").value,
+
+                contatoEmergencia: document.getElementById("contatoEmergencia").value,
+
+                tipo: document.getElementById("tipo").value
+
+            })
+
+        })
+
+        .then(r => r.json())
+
+        .then(() => {
+
+            alert("Paciente cadastrado e enviado para triagem!");
+
+            window.location.href = "triagem.html";
+
+        })
+
+        .catch(err => {
+
+            console.error(err);
+
+            alert("Erro ao cadastrar paciente.");
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
