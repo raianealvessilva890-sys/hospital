@@ -16,31 +16,39 @@
 </div>
 
 <script>
+
 function login() {
- fetch("/login", {
+  alert("Iniciando login...");
+
+  fetch("/login", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
-      usuario: usuario.value,
-      senha: senha.value
+      usuario: document.getElementById("usuario").value,
+      senha: document.getElementById("senha").value
     })
   })
-  .then(r => r.json())
+  .then(res => {
+    alert("Servidor respondeu: " + res.status);
+    return res.json();
+  })
   .then(data => {
-    if(data.tipo === "triagem") location.href = "triagem.html";
-    if(data.tipo === "medico") location.href = "medico.html";
-    if(data.tipo === "atendimento") location.href = "atendimento.html";
+    alert(JSON.stringify(data));
+
+    if (data.tipo === "triagem") {
+      location.href = "triagem.html";
+    } else if (data.tipo === "medico") {
+      location.href = "medico.html";
+    } else if (data.tipo === "atendimento") {
+      location.href = "atendimento.html";
+    }
+  })
+  .catch(erro => {
+    alert("Erro no login: " + erro);
   });
 }
-
- // Atalho secreto: Ctrl + Alt + A abre a página admin.html
-window.addEventListener("keydown", function(e) {
-    if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "a") {
-        e.preventDefault();
-        window.location.href = "admin.html";
-    }
-});
-;
 </script>
 </body>
 </html>
