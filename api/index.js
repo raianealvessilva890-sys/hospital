@@ -146,4 +146,8 @@ app.get("/medicacoes", (req, res) => {
 });
 
 // START
-module.exports = app;
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🏥 Hospital Pro rodando na porta ${PORT}`);
+});
